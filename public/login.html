@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Hostel/PG Finder</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required placeholder="Enter your username">
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+      <button type="submit" class="btn">Login</button>
+      <p class="link">Don't have an account? <a href="/register.html">Register here</a></p>
+
+      <div id="loader" class="loader hidden"></div>
+      <p id="message" class="hidden"></p>
+    </form>
+  </div>
+
+  <script>
+   const form = document.getElementById('loginForm');
+const loader = document.getElementById('loader');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // Show loader and hide message
+  loader.classList.remove('hidden');
+  message.classList.add('hidden');
+
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  if (!username || !password) {
+    loader.classList.add('hidden');
+    message.textContent = 'Please enter both username and password.';
+    message.classList.remove('hidden');
+    message.style.color = 'red';
+    return;
+  }
+
+  try {
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+
+    const result = await response.json();
+    loader.classList.add('hidden');
+    message.textContent = result.message;
+    message.classList.remove('hidden');
+    message.style.color = response.ok ? 'green' : 'red';
+
+    if (response.ok) {
+      setTimeout(() => {
+        window.location.href = '/index.html'; // Adjust the URL as per your project structure
+      }, 2000); // Redirect to the landing page after 2 seconds
+    }
+  } catch (error) {
+    loader.classList.add('hidden');
+    message.textContent = 'An error occurred. Please try again later.';
+    message.classList.remove('hidden');
+    message.style.color = 'red';
+  }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel/PG Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav .auth-buttons a {
+      text-decoration: none;
+      color: white;
+      background-color: #007bff;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+
+    /* Burger Menu Styles */
+    .burger-menu {
+      display: block;
+      cursor: pointer;
+    }
+
+    .burger-menu div {
+      width: 30px;
+      height: 4px;
+      background-color: #007bff;
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+
+    .burger-menu.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger-menu.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger-menu.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Dropdown menu (burger menu) */
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: white;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .nav-menu.active {
+      display: block;
+    }
+
+    .nav-menu a {
+      display: block;
+      color: #007bff;
+      text-decoration: none;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    .nav-menu a:hover {
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+
+    .hero {
+      background: url('https://source.unsplash.com/1600x600/?hostel,accommodation') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .features {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: #007bff;
+    }
+
+    .feature h3 {
+      margin: 1rem 0;
+      color: #333;
+    }
+
+    .cta {
+      background-color: #007bff;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 0.8rem 1.5rem;
+      background-color: white;
+      color: #007bff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    footer ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    footer ul li {
+      margin: 0 15px;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hostel/PG Finder</h1>
+  </header>
+
+  <nav>
+    <div class="logo">Hostel/PG Finder</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+      <!-- Burger Icon as clickable button -->
+      <div class="burger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- The dropdown menu will be shown when the burger menu is clicked -->
+    <div class="nav-menu">
+      <a href="#">Profile</a>
+      <a href="#">Dashboard</a>
+      <a href="#">My Bookings</a>
+      <a href="#">Notifications</a>
+      <a href="#">Recommendations</a>
+      <a href="#">Support</a>
+      <a href="/logout">Logout</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Find the Perfect Hostel or PG Accommodation</h1>
+      <p>Simplify your stay with verified listings, secure bookings, and personalized recommendations.</p>
+      <a href="#" class="cta-button">Search Hostels Now</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="feature">
+      <i class="fas fa-check-circle"></i>
+      <h3>Real-Time Availability</h3>
+      <p>Check room availability instantly.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Verified Listings</h3>
+      <p>Only trusted hostels and PGs are displayed.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-lock"></i>
+      <h3>Secure Payments</h3>
+      <p>Safe and reliable payment processing.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-comments"></i>
+      <h3>Student Reviews</h3>
+      <p>Honest reviews from students.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Looking for a place to stay? Start your search now!</h2>
+    <a href="#">Find Hostels/PGs</a>
+  </section>
+
+  <footer>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="ownerverification.html">Listings</a></li>
+      <li><a href="hostel submission.html">Contact</a></li>
+    </ul>
+    <p>&copy; 2025 Hostel/PG Finder. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Burger menu toggle functionality
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    burgerMenu.addEventListener('click', () => {
+      burgerMenu.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

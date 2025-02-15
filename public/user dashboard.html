@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - Hostel/PG Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffffff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .section {
+      background-color: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      margin-bottom: 15px;
+    }
+
+    .profile-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .profile-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .profile-info div {
+      font-size: 1.2rem;
+    }
+
+    .button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .booking-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .booking-item .details {
+      font-weight: bold;
+    }
+
+    .booking-item .status {
+      color: #28a745;
+    }
+
+    .notification {
+      background-color: #f8f9fa;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-left: 5px solid #007bff;
+    }
+
+    .cta {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .cta a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Your Dashboard</h1>
+  </header>
+
+  <nav>
+    <div class="logo">Hostel/PG Finder</div>
+  </nav>
+
+  <div class="dashboard-container">
+    <!-- Profile Section -->
+    <section class="section profile">
+      <h2>Profile Information</h2>
+      <div class="profile-info">
+        <img src="profile-pic.jpg" alt="Profile Picture">
+        <div>
+          <p><strong>Name:</strong> John Doe</p>
+          <p><strong>Email:</strong> john.doe@example.com</p>
+          <p><strong>Phone:</strong> +91 123 456 7890</p>
+          <a href="#" class="button">Edit Profile</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Bookings Section -->
+    <section class="section bookings">
+      <h2>My Bookings</h2>
+      <div class="booking-item">
+        <div class="details">
+          <p>Hostel ABC - Room 101</p>
+          <p>Check-in: 01/02/2025</p>
+          <p>Check-out: 01/04/2025</p>
+        </div>
+        <div class="status">Confirmed</div>
+      </div>
+      <div class="booking-item">
+        <div class="details">
+          <p>PG XYZ - Room 202</p>
+          <p>Check-in: 05/02/2025</p>
+          <p>Check-out: 05/03/2025</p>
+        </div>
+        <div class="status">Pending</div>
+      </div>
+    </section>
+
+    <!-- Rent Payment Details Section -->
+    <section class="section payment-details">
+      <h2>Rent Payment Details</h2>
+      <ul>
+        <li>Hostel ABC - ₹5,000 - Paid on 01/02/2025</li>
+        <li>PG XYZ - ₹3,000 - Pending</li>
+      </ul>
+      <a href="#" class="button">View Payment History</a>
+    </section>
+
+    <!-- Notifications Section -->
+    <section class="section notifications">
+      <h2>Notifications</h2>
+      <div class="notification">
+        <p>Hostel ABC has updated the rent. Check the details in your bookings.</p>
+      </div>
+      <div class="notification">
+        <p>Your booking at PG XYZ is pending confirmation. Please wait for approval.</p>
+      </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="section recommendations">
+      <h2>Recommendations</h2>
+      <p>Based on your previous bookings, we recommend:</p>
+      <ul>
+        <li>Hostel XYZ - ₹4,500/month</li>
+        <li>PG ABC - ₹3,500/month</li>
+      </ul>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section support">
+      <h2>Need Help?</h2>
+      <p>If you have any issues or queries, feel free to contact our support team.</p>
+      <a href="#" class="button">Contact Support</a>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <h2>Looking for a new place? Start your search now!</h2>
+      <a href="#">Find New Hostels/PGs</a>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hostel/PG Finder. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
